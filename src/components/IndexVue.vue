@@ -69,7 +69,6 @@ import ModalVue from './ModalVue.vue';
 import { firebaseMixin } from '@/firebase/mixinFirebase'
 import firebase from 'firebase/compat/app';
 import "firebase/compat/database";
-import router from '@/router';
 
 export default {
     name: 'IndexVue',
@@ -122,14 +121,15 @@ export default {
                         alert('Ops, algo deu errado, tente novamente xD')
                     } else {
                         this.showModal = true
-                        this.link = `https://carlosalberto133.github.io/CTRL-V/${payload.id}`
+                        this.link = `http://localhost:8080/${payload.id}`
+                        this.codigo = ''
                     }
                 })
             }
         },
         closeModal() {
             this.showModal = false;
-            router.push(this.link)
+            window.open(this.link)
         }
     }
 }
